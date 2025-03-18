@@ -5,7 +5,7 @@ account: j4ii0i-alberto-madin0rivera
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 13602330
-bundleId: 9873805
+bundleId: 9960242
 url: https://j4ii0i-alberto-madin0rivera.shinyapps.io/Graph_Gallery/
 version: 1
 asMultiple: FALSE

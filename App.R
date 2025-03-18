@@ -14,7 +14,7 @@ library(bslib)
 shinyOptions(bootstrap = 4)
 
 # CSS para personalizar la barra superior y los box
-custom_css <- tags$head(
+custom_css = tags$head(
   tags$style(HTML("
     /* Hacer la barra superior completamente negra */
     .main-header .navbar {
@@ -52,7 +52,7 @@ custom_css <- tags$head(
 ################################################################################
 
 # Definir la UI
-ui <- dashboardPage(
+ui = dashboardPage(
   skin = "black",
   dashboardHeader(title = "Graph Gallery"),
   
@@ -63,7 +63,6 @@ ui <- dashboardPage(
       
       menuItem("Introducción a R", tabName = "r_introduction", icon = icon("sitemap"),
                menuSubItem("¿Qué es R?", tabName = "r_0"),
-               menuSubItem("¿Qué es R Base?", tabName = "r_1"),
                menuSubItem("¿Qué es ggplot2?", tabName = "r_2"),
                menuSubItem("¿Qué es plotly?", tabName = "r_3")
                ),
@@ -1103,76 +1102,71 @@ ui <- dashboardPage(
                       "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
                     )
                     ),
-                box(title = "Gráfico de Barras con ggplot2", 
+                box(title = "Gráfico de barras con ggplot con tono de color viridis", 
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE, 
-                    width = 12,
+                    width = 7,
                     collapsible = TRUE,
                     collapsed = TRUE,
-                    HTML("<p>
-                    A continuación se muestra un ejemplo sencillo de cómo usar <code>ggplot2</code>
-                    para generar un gráfico de barras con la función <code>geom_bar()</code>. Poniendo el
-                    argumento dentro <code>stat = 'identity'</code>.
-                         </p>"),
-                    br(),
-                    verbatimTextOutput("barplot_code"),
-                    br(),
-                    "A continuación se muestra el gráfico de barras generado:",
-                    br(),
-                    plotOutput("barplot_graph"),
+                    p("Para usar la paleta de colores ", tags$b("viridis"),
+                      " se puede usar la función ", tags$code("scale_fill_viridis"),
+                      " que viene con el paquete ", tags$code("viridis"), "."),
+                    verbatimTextOutput("barplot_gg__1"),
+                    plotOutput("barplot_gg__2"),
                     tags$footer(
                       style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
                       "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
                     )
                 ),
-                box(title = "Control de color para el Gráfico de Barras con ggplot2", 
+                box(title = "Gráfico de barras con ggplot con diferentes tamaños de anchos de las barras", 
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE, 
-                    width = 12,
+                    width = 5,
                     collapsible = TRUE,
                     collapsed = TRUE,
-                    HTML('<p>
-                         Aquí hay algunos métodos diferentes para controlar los controles de barra. Hay
-                         que tener en cuenta que el uso de una leyenda en este caso
-                         no es necesario, ya que los nombres ya no se muestran
-                         en el eje de las X. Puede eliminarse con la función
-                         <code>themme(legend.position = "none")</code>
-                         <p>'),
-                    verbatimTextOutput("barplot2_ggplot2"),
-                    plotOutput("grafico_de_barras2_ggplot2"),
+                    p("Para variar el tamaño de las barras, podemos modificar el ancho
+                      de las barras usando el argumento ", tags$code("width"), " dentro
+                      de ", tags$code("geom_bar()"), ". Aquí el ejemplo:"),
+                    verbatimTextOutput("barplot_gg__3"),
+                    plotOutput("barplot_gg__4"),
                     tags$footer(
                       style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
                       "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
                     )
                 ),
-                box(title = "Gráfico de Barras Horizontal", 
+                box(title = "Gráfico de barras con ggplot con coord_flip() para hacerlo horizontal", 
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE, 
-                    width = 12,
+                    width = 6,
                     collapsible = TRUE,
                     collapsed = TRUE,
-                    HTML('<p>
-                         En muchos casos, tiene sentido convertir un diagrama de barras a formato horizontal,
-                         ya que esto mejora considerablemente la legibilidad de las etiquetas
-                         de los grupos, especialmente cuando estas son largas o cuando hay muchas categorías.
-                         Al cambiar la orientación de las barras,
-                         las etiquetas tienen más espacio para ser visualizadas de manera clara,
-                         lo que facilita su interpretación.
-                         <br><br>
-                         Afortunadamente, realizar este cambio en un gráfico creado con <code>ggplot2</code>
-                         es muy sencillo, gracias a la función <code>coord_flip()</code>, que
-                         permite invertir las barras y las etiquetas sin necesidad de realizar transformaciones
-                         complejas.
-                         </p>'),
-                    verbatimTextOutput("barplot_code2"),
-                    plotOutput("r"),
+                    p("El siguiente código usa la función ", tags$code("coord_flip()"),
+                      " para girar el gráfico y hacerlo horizontal:"),
+                    verbatimTextOutput("barplot_gg__5"),
+                    plotOutput("barplot_gg__6"),
                     tags$footer(
                       style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
                       "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
                     )
+                    ),
+                box(title = "Gráfico de barras con ggplot con un tema minimalista de fondo",
+                    status = NULL,
+                    class = "box-black", 
+                    solidHeader = TRUE, 
+                    width = 6,
+                    collapsible = TRUE,
+                    collapsed = TRUE,
+                    p("Se puede usar el tema ", tags$code("theme_minimal()"), " para darle un fondo
+                      limpio y sin detalles adicionales."),
+                    verbatimTextOutput("barplot_gg__7"),
+                    plotOutput("barplot_gg__8"),
+                    tags$footer(
+                      style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
+                      "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
+                      )
                     )
               )
       ),
@@ -1832,7 +1826,7 @@ ui <- dashboardPage(
 ################################################################################
 
 # Definir la lógica del servidor
-server <- function(input, output) {
+server = function(input, output) {
 ###############################################################
   output$interactivo_1 = renderText({'library(ggiraph)
 library(ggplot2) 
@@ -1901,7 +1895,7 @@ barplot(table(iris$Species),
   
   output$barras__6 = renderPlot({
     # Paleta de colores pastel
-    pastel_colors <- c("#FAD02E", "#F28D35", "#D83367")
+    pastel_colors = c("#FAD02E", "#F28D35", "#D83367")
     
     # Gráfico de barras con paleta de colores y borde NA (sin borde)
     barplot(table(iris$Species), 
@@ -2019,8 +2013,8 @@ datos = data.frame(
 
 # Gráfico de barras
 ggplot(datos, aes(x=nombre, y=valor)) + 
-geom_bar(stat = "identity")  # Usamos "identity" para que las 
-# barras se construyan con los valores de "valor"'})
+geom_bar(stat = "identity") # Usamos "identity" para que las 
+  # barras se construyan con los valores de "valor"'})
 
   output$barras__14 = renderPlot({
     # Cargar ggplot2
@@ -2045,11 +2039,11 @@ geom_bar(stat = "identity")  # Usamos "identity" para que las
 library(plotly)
 
 # Datos de ejemplo
-categorias <- c("A", "B", "C", "D")
-valores <- c(5, 10, 13, 7)
+categorias = c("A", "B", "C", "D")
+valores = c(5, 10, 13, 7)
 
 # Crear un gráfico de barras interactivo con Plotly
-fig <- plot_ly(x = categorias, y = valores, type = "bar", marker = list(color = "skyblue"))
+fig = plot_ly(x = categorias, y = valores, type = "bar", marker = list(color = "skyblue"))
 
 # Mostrar el gráfico
 fig
@@ -2116,7 +2110,7 @@ plot(x, y, type = "l)'
   })
   
   output$interactivo_3 = renderText({'# Crear el primer gráfico (Gráfico de dispersión)
-p1 <- ggplot(world_sf, aes(
+p1 = ggplot(world_sf, aes(
   GDP_per_capita,
   Happiness_Score,
   tooltip = name,
@@ -2132,7 +2126,7 @@ p1 <- ggplot(world_sf, aes(
   )
 
 # Crear el segundo gráfico (Gráfico de barras)
-p2 <- ggplot(world_sf, aes(
+p2 = ggplot(world_sf, aes(
   x = reorder(name, Happiness_Score),
   y = Happiness_Score,
   tooltip = name,
@@ -2149,7 +2143,7 @@ p2 <- ggplot(world_sf, aes(
   )
 
 # Crear el tercer gráfico (Mapa temático)
-p3 <- ggplot() +
+p3 = ggplot() +
   geom_sf(data = world_sf, fill = "lightgrey", color = "lightgrey") +
   geom_sf_interactive(
     data = filter(world_sf, !is.na(Happiness_Score)),
@@ -2164,11 +2158,11 @@ p3 <- ggplot() +
   )
 
 # Combinar los gráficos
-combined_plot <- (p1 + p2) / p3 + plot_layout(heights = c(1, 2))
+combined_plot = (p1 + p2) / p3 + plot_layout(heights = c(1, 2))
 
 # Crear el gráfico interactivo
-interactive_plot <- girafe(ggobj = combined_plot)
-interactive_plot <- girafe_options(
+interactive_plot = girafe(ggobj = combined_plot)
+interactive_plot = girafe_options(
   interactive_plot,
   opts_hover(css = "fill:red;stroke:black;")
 )
@@ -2176,12 +2170,12 @@ interactive_plot <- girafe_options(
 interactive_plot'})
 
 output$interactivo_2 = renderText({'# Leer el mapa mundial completo
-world_sf <- read_sf("https://raw.githubusercontent.com/holtzy/R-graph-gallery/master/DATA/world.geojson")
-world_sf <- world_sf %>%
+world_sf = read_sf("https://raw.githubusercontent.com/holtzy/R-graph-gallery/master/DATA/world.geojson")
+world_sf = world_sf %>%
   filter(!name %in% c("Antarctica", "Greenland"))
 
 # Crear un conjunto de datos de ejemplo
-happiness_data <- data.frame(
+happiness_data = data.frame(
   Country = c(
     "France", "Germany", "United Kingdom",
     "Japan", "China", "Vietnam",
@@ -2199,7 +2193,7 @@ happiness_data <- data.frame(
 )
 
 # Unir los datos de felicidad con el mapa mundial completo
-world_sf <- world_sf %>%
+world_sf = world_sf %>%
   left_join(happiness_data, by = c("name" = "Country"))'})
 
 output$Scatterplot_plotly = renderText({'# Cargar librerías
@@ -2224,7 +2218,7 @@ library(ggplot2)
 library(ggExtra)
 
 # Crear el gráfico de dispersión
-p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+p = ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 
 print(p)'})
@@ -2253,7 +2247,7 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, size=Petal.Width)) +
     ggtitle("Diagrama de Dispersión con Tamaño de los Puntos") +
     theme_minimal()'})
 
-output$iris_tabla <- renderDataTable({
+output$iris_tabla = renderDataTable({
   datatable(iris,
             options = list(scrollX = TRUE,
               pageLength = 10, # Número de filas en la página
@@ -2272,7 +2266,7 @@ ggplot(iris,
            )) +
   geom_point()'})
 
-output$s <- renderText({'# Cargar el conjunto de datos mtcars
+output$s = renderText({'# Cargar el conjunto de datos mtcars
 data(mtcars)
 
 # Crear un gráfico de dispersión con R base
@@ -2283,89 +2277,84 @@ plot(mtcars$wt, mtcars$mpg,
      pch = 19, # Estilo de los puntos
      col = "blue") # Color de los puntos'})
 
-output$a1 <- renderText({'# Cargar la librería ggplot2
+output$a1 = renderText({'# Cargar la librería ggplot2
 library(ggplot2)
 
 # Crear el gráfico de dispersión
 ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()  # Agregar los puntos al gráfico'})
 
-output$barplot2_ggplot2 <- renderText({"# Librería
+output$barplot_gg__3 = renderText({"# Cargar ggplot2
 library(ggplot2)
 
-# 1. Color uniforme
-ggplot(mtcars, aes(x=as.factor(cyl) )) +
-  geom_bar(color='blue', fill=rgb(0.1,0.4,0.5,0.7) )
- 
-# 2. Usando la función scale_fill_hue()
-ggplot(mtcars, aes(x=as.factor(cyl), fill=as.factor(cyl) )) + 
-  geom_bar( ) +
-  scale_fill_hue(c = 40) +
-  theme(legend.position='none')
- 
-# 3. Usando la función scale_fill_brewer
-ggplot(mtcars, aes(x=as.factor(cyl), fill=as.factor(cyl) )) + 
-  geom_bar( ) +
-  scale_fill_brewer(palette = 'Set1') +
-  theme(legend.position='none')
+# Crear los datos
+datos = data.frame(
+  nombre=c('Ana', 'Luis', 'Pedro', 'Maria', 'Juan'),  
+  valor=c(3, 12, 5, 18, 45)
+)
 
-# 4. Con escala grices
-ggplot(mtcars, aes(x=as.factor(cyl), fill=as.factor(cyl) )) + 
-  geom_bar( ) +
-  scale_fill_grey(start = 0.25, end = 0.75) +
-  theme(legend.position='none')
-
-# 5. Con un seteo manual de colores
-ggplot(mtcars, aes(x=as.factor(cyl), fill=as.factor(cyl) )) +  
-  geom_bar( ) +
-  scale_fill_manual(values = c('red', 'green', 'blue') ) +
-  theme(legend.position='none')"})
+# Gráfico de barras con diferentes anchos
+ggplot(datos, aes(x=nombre, y=valor)) + 
+  geom_bar(stat = 'identity', width = 0.3)  
+# Cambia el valor de 'width' para variar el ancho"})
 
 
 
 # Código de R para el gráfico de barras ggplot2
-output$barplot_code2 <- renderText("# Código R para un gráfico de barras
+output$barplot_gg__5 = renderText("# Cargar ggplot2
 library(ggplot2)
 
-# Generamos el data frame
-data <- data.frame(x = c('A', 'B', 'C', 'D'),
-                  y = c(3, 5, 2, 8))
-                                   
-# Guardamos el gráfico en una variable
-p <- ggplot(data, aes(x = x,
-                      y = y)) +
-                      geom_bar(stat = 'identity') +
-                      coord_flip()
-                                   
-# Imprimimos el gráfico
-print(p)")
+# Crear los datos
+datos = data.frame(
+  nombre=c('Ana', 'Luis', 'Pedro', 'Maria', 'Juan'),  
+  valor=c(3, 12, 5, 18, 45)
+)
 
-output$barplot_code <- renderText({
-  "# Código R para un gráfico de barras
+# Gráfico de barras horizontal con coord_flip
+ggplot(datos, aes(x=nombre, y=valor)) + 
+  geom_bar(stat = 'identity') + 
+  coord_flip()  # Esto voltea el gráfico para que sea horizontal
+")
+
+output$barplot_gg__7 = renderText({"# Cargar ggplot2
 library(ggplot2)
 
-# Generamos el data frame
-data <- data.frame(x = c('A', 'B', 'C', 'D'),
-                   y = c(3, 5, 2, 8))
+# Crear los datos
+datos = data.frame(
+  nombre=c('Ana', 'Luis', 'Pedro', 'Maria', 'Juan'),  
+  valor=c(3, 12, 5, 18, 45)
+)
 
-# Guardamos el gráfico en una variable
-p <- ggplot(data, aes(x = x,
-                      y = y)) +
-  geom_bar(stat = 'identity')
-  
-# Imprimimos el gráfico
-print(p)
-"
+# Gráfico de barras con tema minimalista
+ggplot(datos, aes(x=nombre, y=valor)) + 
+  geom_bar(stat = 'identity') + 
+  theme_minimal()  # Aplica un fondo minimalista
+"})
+
+output$barplot_gg__1 = renderText({"# Cargar ggplot2 y viridis
+library(ggplot2)
+library(viridis)
+
+# Crear los datos
+datos = data.frame(
+  nombre=c('Ana', 'Luis', 'Pedro', 'Maria', 'Juan'),  
+  valor=c(3, 12, 5, 18, 45)
+)
+
+# Gráfico de barras con color viridis
+ggplot(datos, aes(x=nombre, y=valor, fill=nombre)) + 
+  geom_bar(stat = 'identity') + 
+  scale_fill_viridis(discrete = TRUE)"
 })
 
 # Código de R para el gráfico de barras ggplotly
-output$a <- renderText({
+output$a = renderText({
   '# Cargar las librerías necesarias
 library(ggplot2)
 library(plotly)
 
 # Crear un gráfico de barras con ggplot2
-ggplot_bar <- ggplot(mtcars, aes(x = as.factor(cyl))) +
+ggplot_bar = ggplot(mtcars, aes(x = as.factor(cyl))) +
   geom_bar(fill = "skyblue", color = "black") +
   labs(x = "Número de Cilindros", y = "Frecuencia", title = "Gráfico de Barras: Número de Cilindros en mtcars")
 
@@ -2375,7 +2364,7 @@ ggplotly(ggplot_bar)'})
 
 
 
-output$s_1 <- renderPlot({
+output$s_1 = renderPlot({
   # Cargar el conjunto de datos mtcars
   data(mtcars)
   
@@ -2390,18 +2379,24 @@ output$s_1 <- renderPlot({
 
 
 # Gráfico de barras ggplot2
-output$barplot_graph <- renderPlot({
+output$barplot_gg__2 = renderPlot({
+  # Cargar ggplot2 y viridis
   library(ggplot2)
+  library(viridis)
   
-  data <- data.frame(x = c('A', 'B', 'C', 'D'),
-                     y = c(3, 5, 2, 8))
-  p <- ggplot(data, aes(x = x,
-                        y = y)) +
-    geom_bar(stat = 'identity')
-  print(p)
+  # Crear los datos
+  datos = data.frame(
+    nombre=c("Ana", "Luis", "Pedro", "Maria", "Juan"),  
+    valor=c(3, 12, 5, 18, 45)
+  )
+  
+  # Gráfico de barras con color viridis
+  ggplot(datos, aes(x=nombre, y=valor, fill=nombre)) + 
+    geom_bar(stat = "identity") + 
+    scale_fill_viridis(discrete = TRUE)
 })
 
-output$plot_a1 <- renderPlot({# Cargar la librería ggplot2
+output$plot_a1 = renderPlot({# Cargar la librería ggplot2
   library(ggplot2)
   
   # Crear el gráfico de dispersión
@@ -2410,13 +2405,13 @@ output$plot_a1 <- renderPlot({# Cargar la librería ggplot2
 })
 
 # Gráfico de barras con colores
-output$a_graph <- renderPlotly({
+output$a_graph = renderPlotly({
   # Cargar las librerías necesarias
   library(ggplot2)
   library(plotly)
   
   # Crear un gráfico de barras con ggplot2
-  ggplot_bar <- ggplot(mtcars, aes(x = as.factor(cyl))) +
+  ggplot_bar = ggplot(mtcars, aes(x = as.factor(cyl))) +
     geom_bar(fill = "skyblue", color = "black") +
     labs(x = "Número de Cilindros", y = "Frecuencia", title = "Gráfico de Barras: Número de Cilindros en mtcars")
   
@@ -2425,56 +2420,52 @@ output$a_graph <- renderPlotly({
 })
 
 
-output$grafico_de_barras2_ggplot2 <- renderPlot({# Librería
+output$barplot_gg__4 = renderPlot({# Cargar ggplot2
   library(ggplot2)
-  library(gridExtra)
-  # 1. Color uniforme
-  plot1 = ggplot(mtcars, aes(x=as.factor(cyl) )) +
-    geom_bar(color='blue', fill=rgb(0.1,0.4,0.5,0.7) )
   
-  # 2. Usando la función scale_fill_hue()
-  plot2 = ggplot(mtcars, aes(x=as.factor(cyl), fill=as.factor(cyl) )) + 
-    geom_bar( ) +
-    scale_fill_hue(c = 40) +
-    theme(legend.position='none')
+  # Crear los datos
+  datos = data.frame(
+    nombre=c("Ana", "Luis", "Pedro", "Maria", "Juan"),  
+    valor=c(3, 12, 5, 18, 45)
+  )
   
-  # 3. Usando la función scale_fill_brewer
-  plot3 = ggplot(mtcars, aes(x=as.factor(cyl), fill=as.factor(cyl) )) + 
-    geom_bar( ) +
-    scale_fill_brewer(palette = 'Set1') +
-    theme(legend.position='none')
+  # Gráfico de barras con diferentes anchos
+  ggplot(datos, aes(x=nombre, y=valor)) + 
+    geom_bar(stat = "identity", width = 0.3)  # Cambia el valor de "width" para variar el ancho
+  })
+
+output$barplot_gg__8 = renderPlot({
+  # Cargar ggplot2
+  library(ggplot2)
   
-  # 4. Con escala grices
-  plot4 = ggplot(mtcars, aes(x=as.factor(cyl), fill=as.factor(cyl) )) + 
-    geom_bar( ) +
-    scale_fill_grey(start = 0.25, end = 0.75) +
-    theme(legend.position='none')
+  # Crear los datos
+  datos = data.frame(
+    nombre=c("Ana", "Luis", "Pedro", "Maria", "Juan"),  
+    valor=c(3, 12, 5, 18, 45)
+  )
   
-  # 5. Con un seteo manual de colores
-  plot5 = ggplot(mtcars, aes(x=as.factor(cyl), fill=as.factor(cyl) )) +  
-    geom_bar( ) +
-    scale_fill_manual(values = c('red', 'green', 'blue') ) +
-    theme(legend.position='none')
+  # Gráfico de barras con tema minimalista
+  ggplot(datos, aes(x=nombre, y=valor)) + 
+    geom_bar(stat = "identity") + 
+    theme_minimal()  # Aplica un fondo minimalista
   
-  grid.arrange(plot1, plot2, plot3, plot4, plot5, ncol = 2, nrow = 3)
 })
 
-output$r <- renderPlot({
-  # Código R para un gráfico de barras
+output$barplot_gg__6 = renderPlot({
+  # Cargar ggplot2
   library(ggplot2)
   
-  # Generamos el data frame
-  data <- data.frame(x = c('A', 'B', 'C', 'D'),
-                     y = c(3, 5, 2, 8))
+  # Crear los datos
+  datos = data.frame(
+    nombre=c("Ana", "Luis", "Pedro", "Maria", "Juan"),  
+    valor=c(3, 12, 5, 18, 45)
+  )
   
-  # Guardamos el gráfico en una variable
-  p <- ggplot(data, aes(x = x,
-                        y = y)) +
-    geom_bar(stat = 'identity') +
-    coord_flip()
+  # Gráfico de barras horizontal con coord_flip
+  ggplot(datos, aes(x=nombre, y=valor)) + 
+    geom_bar(stat = "identity") + 
+    coord_flip()  # Esto voltea el gráfico para que sea horizontal
   
-  # Imprimimos el gráfico
-  print(p)
 })
 
 output$iris_plot = renderPlot(ggplot(iris, 
@@ -2484,7 +2475,7 @@ output$iris_plot = renderPlot(ggplot(iris,
                                      )) +
                                 geom_point())
 
-output$scatter_plots <- renderPlot({
+output$scatter_plots = renderPlot({
   library(ggplot2)
   library(gridExtra)
   
@@ -2513,7 +2504,7 @@ output$marginal_plot =  renderPlot({# Librerías a usar
   library(ggExtra)
   
   # Crear el gráfico de dispersión
-  p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  p = ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
     geom_point()
   print(p)})
 
@@ -2522,7 +2513,7 @@ output$marginal_plot1 = renderPlot({
   library(ggExtra)
   
   # Crear el gráfico de dispersión
-  p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  p = ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
     geom_point()
   ggMarginal(p, type = "histogram")
 })
@@ -2532,7 +2523,7 @@ output$marginal_plot3 = renderPlot({
   library(ggExtra)
   
   # Crear el gráfico de dispersión
-  p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  p = ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
     geom_point()
   ggMarginal(p, type = "violin", fill = "lightblue")
 })
@@ -2542,7 +2533,7 @@ output$marginal_plot2 = renderPlot({
   library(ggExtra)
   
   # Crear el gráfico de dispersión
-  p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  p = ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
     geom_point()
   ggMarginal(p, type = "density")
 })
@@ -2581,12 +2572,12 @@ output$interactivo_plot_a = renderGirafe({library(ggiraph) # install.packages('g
   set.seed(123)
   
   # Leer el mapa mundial completo
-  world_sf <- read_sf("https://raw.githubusercontent.com/holtzy/R-graph-gallery/master/DATA/world.geojson")
-  world_sf <- world_sf %>%
+  world_sf = read_sf("https://raw.githubusercontent.com/holtzy/R-graph-gallery/master/DATA/world.geojson")
+  world_sf = world_sf %>%
     filter(!name %in% c("Antarctica", "Greenland"))
   
   # Crear un conjunto de datos de ejemplo
-  happiness_data <- data.frame(
+  happiness_data = data.frame(
     Country = c(
       "France", "Germany", "United Kingdom",
       "Japan", "China", "Vietnam",
@@ -2604,11 +2595,11 @@ output$interactivo_plot_a = renderGirafe({library(ggiraph) # install.packages('g
   )
   
   # Unir los datos de felicidad con el mapa mundial completo
-  world_sf <- world_sf %>%
+  world_sf = world_sf %>%
     left_join(happiness_data, by = c("name" = "Country"))
   
   # Crear el primer gráfico (Gráfico de dispersión)
-  p1 <- ggplot(world_sf, aes(
+  p1 = ggplot(world_sf, aes(
     GDP_per_capita,
     Happiness_Score,
     tooltip = name,
@@ -2624,7 +2615,7 @@ output$interactivo_plot_a = renderGirafe({library(ggiraph) # install.packages('g
     )
   
   # Crear el segundo gráfico (Gráfico de barras)
-  p2 <- ggplot(world_sf, aes(
+  p2 = ggplot(world_sf, aes(
     x = reorder(name, Happiness_Score),
     y = Happiness_Score,
     tooltip = name,
@@ -2641,7 +2632,7 @@ output$interactivo_plot_a = renderGirafe({library(ggiraph) # install.packages('g
     )
   
   # Crear el tercer gráfico (Mapa temático)
-  p3 <- ggplot() +
+  p3 = ggplot() +
     geom_sf(data = world_sf, fill = "lightgrey", color = "lightgrey") +
     geom_sf_interactive(
       data = filter(world_sf, !is.na(Happiness_Score)),
@@ -2656,11 +2647,11 @@ output$interactivo_plot_a = renderGirafe({library(ggiraph) # install.packages('g
     )
   
   # Combinar los gráficos
-  combined_plot <- (p1 + p2) / p3 + plot_layout(heights = c(1, 2))
+  combined_plot = (p1 + p2) / p3 + plot_layout(heights = c(1, 2))
   
   # Crear el gráfico interactivo
-  interactive_plot <- girafe(ggobj = combined_plot)
-  interactive_plot <- girafe_options(
+  interactive_plot = girafe(ggobj = combined_plot)
+  interactive_plot = girafe_options(
     interactive_plot,
     opts_hover(css = "fill:red;stroke:black;")
   )
