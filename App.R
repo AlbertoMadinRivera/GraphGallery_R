@@ -1,5 +1,5 @@
 rm(list = ls())
-cat("\014")  # Esto limpia la consola
+cat("\014")  # Esto limpia la consola.
 
 library(shiny)
 library(shinydashboard)
