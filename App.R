@@ -2662,5 +2662,3 @@ output$interactivo_plot_a = renderGirafe({library(ggiraph) # install.packages('g
 
 # Ejecutar la aplicación Shiny
 shinyApp(ui = ui, server = server)
-
-system("git remote set-url origin https://github.com/AlbertoMadinRivera/GraphGallery_R.git")
