@@ -1106,7 +1106,7 @@ ui = dashboardPage(
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE, 
-                    width = 7,
+                    width = 6,
                     collapsible = TRUE,
                     collapsed = TRUE,
                     p("Para usar la paleta de colores ", tags$b("viridis"),
@@ -1123,7 +1123,7 @@ ui = dashboardPage(
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE, 
-                    width = 5,
+                    width = 6,
                     collapsible = TRUE,
                     collapsed = TRUE,
                     p("Para variar el tamaño de las barras, podemos modificar el ancho
