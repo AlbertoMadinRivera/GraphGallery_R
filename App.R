@@ -1169,6 +1169,7 @@ ui = dashboardPage(
                       )
                     )
               )
+              
       ),
       
       # Gráfico de barras con colores
