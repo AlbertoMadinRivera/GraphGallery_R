@@ -2661,5 +2661,10 @@ output$interactivo_plot_a = renderGirafe({library(ggiraph) # install.packages('g
 
 }
 
+
 # Ejecutar la aplicación Shiny
 shinyApp(ui = ui, server = server)
+
+system("git add .")
+system('git commit -m "Actualización para contribuir en GitHub"')
+system("git push origin main")
