@@ -2665,3 +2665,19 @@ output$interactivo_plot_a = renderGirafe({library(ggiraph) # install.packages('g
 
 # Ejecutar la aplicación Shiny
 shinyApp(ui = ui, server = server)
+
+
+system("git config --global commit.gpgSign false")
+system("gpg --full-generate-key")
+system("gpg --list-secret-keys --keyid-format LONG")
+system("git config --global user.signingkey <entorno-prueba>")
+system("git config --global commit.gpgSign true")
+
+
+system("git config --global user.email 'betomadinrivera@gmail.com'")
+system("git config --global user.email")
+system("git config --local user.email 'betomadinrivera@gmail.com'")
+system("git config --global commit.gpgSign false")
+system("git config --global --list")
+system('git commit -m "Actualización para contribuir en GitHub"')
+system("git push origin main")
