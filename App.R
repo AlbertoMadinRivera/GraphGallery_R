@@ -1121,6 +1121,7 @@ ui = dashboardPage(
                 ),
                 box(title = "Gráfico de barras con ggplot con diferentes tamaños de anchos de las barras", 
                     status = NULL,
+                    
                     class = "box-black", 
                     solidHeader = TRUE, 
                     width = 6,
