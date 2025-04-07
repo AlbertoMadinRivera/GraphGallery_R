@@ -1175,12 +1175,16 @@ ui = dashboardPage(
       # Gráfico de barras con colores
       tabItem(tabName = "barplot_colored",
               fluidRow(
-                box(title = "Gráfico de Barras con ggplot2 y plotly", 
+                box(title = "Introducción al Gráfico de Barras en Plotly", 
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE, 
                     width = 12,
                     collapsible = TRUE,
+                    HTML('
+                         <h1 style="text-align: center;">Gráfico de barras en <code>ggplot2</code></h1>
+                         '),
+                    p(),
                     HTML('<p>
                     <code>Plotly</code> es una biblioteca de visualización interactiva de datos que permite
                          crear gráficos dinámicos y visuales y visuales, como lo son los gráficos de barras.
