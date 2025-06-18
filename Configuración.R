@@ -32,3 +32,20 @@ system('git commit -m "Actualización para contribuir en GitHub"')
 
 # 9. Empujar los cambios a GitHub
 system("git push origin main")
+
+
+
+
+
+# Error llave
+# Añadir archivos
+system("git add .")
+
+# Hacer commit con firma GPG (si ya está configurada)
+system('git commit -m "Actualización automática desde R"')
+
+# O hacer commit sin firma GPG
+system('git commit -m "Commit sin firma" --no-gpg-sign')
+
+# Empujar al repositorio remoto
+system("git push origin main")

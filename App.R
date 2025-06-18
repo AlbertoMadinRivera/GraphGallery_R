@@ -1360,49 +1360,34 @@ ui = dashboardPage(
                       
                     )
                     ),
+                  tags$footer(
+                    style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
+                    "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
+                  )
                 ),
                 
               )
               ),
       tabItem(tabName = "scatterplot",
               fluidRow(
-                box(title = "¿Qué es un Gráfico de Dispersión?", 
+                box(title = "Introducción al Gráfico de dispersión en R Base", 
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE, 
                     width = 12,
                     collapsible = TRUE,
-                    HTML("<p>
-                         Un <b>gráfico de dispersión</b> (también conocido como diagrama de dispersión o scatter plot)
-                         es una representación gráfica de datos en dos dimensiones en la que cada punto en el gráfico corresponde
-                         a un par de valores de dos variables numéricas. Es utilizado para observar
-                         la relación entre estas dos variables, mostrando cómo una variable puede cambiar en función de la otra.
-                         <br>
-                         <h2>Características principales de un gráfico de dispersión</h2>
-                         <br>
-                         <li><b>Eje X e Y</b>: El gráfico tiene dos ejes, uno para cada variable.
-                         La variable en el eje horizontal (eje X) suele ser la independiente, y la variable en el eje
-                         vertical (eje Y) es la dependiente.</li>
-                         <li><b>Puntos</b>: Cada punto en el gráfico representa una observación en el conjunto de datos,
-                         con sus valors en los ejes X y Y.</li>
-                         <li><b>Patrones</b>: Los gráficos de dispersión son útiles para identificar patrones, tendencias y relaciones entre
-                         variables. Por ejemplo, si los puntos se agrupan en una línea diagonal, eso puede indicar una relación lineal
-                         entre las dos variables.</li>
-                         <li><b>Outliers</b>: También permiten detectar valores atípicos (outliers) que están alejados
-                         de la tendencia general de los datos.</li>
-                         </p>
-                         <h2>¿Cuándo se usa un gráfico de dispersión?</h2>
-                         <br>
-                         <p>
-                         Los gráficos de dispersión son comunmente utilizados en estadística y análisis de datos para:
-                         <li><b>Explorar la relación entre dos variables</b>: Por ejemplo, la relación entre la edad y el
-                         salario de un grupo de personas.</li>
-                         <li><b>Identificar tendencias o patrones</b>: Por ejemplo, observar si hay una tendencia lineal o no lineal entre
-                         las variables.</li>
-                         <li><b>Detectar correlaciones</b>: Por ejemplo, si dos variables están correlacionadas positivamente, 
-                         negativamente o no tienen correlación.</li>
-                         </p>
-                         "),
+                    HTML('
+                     <h1 style="text-align: center;">Gráfico de Dispersión en <b>R Base</b></h1>
+                     '),
+                    p('Un ', tags$b("gráfico de dispersión"), "en ", tags$code("R base"), " es una
+                      representación visual que permite mostrar la relación entre dos variables numéricas.
+                      Cada punto en el gráfico representa una observación, con su posición determinada por los
+                      valores de esas dos variables. Este tipo de gráfico es útil para detectar patrones,
+                      tendencias, agrupaciones o relaciones lineales/no lineales entre variables."),
+                    p("A continuación trabajaremos con el conjunto de datos", tags$code("iris"), " ampliamente
+                      conocido en ", tags$code("R"), ", que contiene medidas de 150 flores de iris, distribuidas
+                      en tres especies: ", tags$i("setosa, versicolor, virginica"), " y cuatro características:
+                      largo y ancho del sépalo y largo y ancho del pétalo."),
                     tags$footer(
                       style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
                       "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
@@ -1431,6 +1416,7 @@ ui = dashboardPage(
                     tags$footer(
                       style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
                       "Recuerda que puedes agregar la línea e tendencia al gráfico de dispersión - ", Sys.Date()),
+                    
                 )
                 
               )
