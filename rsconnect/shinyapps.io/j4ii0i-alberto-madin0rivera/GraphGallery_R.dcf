@@ -1,0 +1,13 @@
+name: GraphGallery_R
+title: GraphGallery_R
+username: j4ii0i-alberto-madin0rivera
+account: j4ii0i-alberto-madin0rivera
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14923223
+bundleId: 10448843
+url: https://j4ii0i-alberto-madin0rivera.shinyapps.io/GraphGallery_R/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|README.md

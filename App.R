@@ -77,6 +77,7 @@ ui = dashboardPage(
       
       # Gráficos de Dispersión (con subopciones)
       menuItem("Gráfico de Dispersión", tabName = "scatterplot", icon = icon("line-chart"),
+               menuSubItem("Introducción", tabName = "scatterplot_1"),
                menuSubItem("Gráfico de Dispersión r base", tabName = "scatterplot"),
                menuSubItem("Gráfico de Dispersión con ggplot2", tabName = "scatterplot_colored"),
                menuSubItem("Distribución marginal con ggExtra", tabName = "scatterplot_ggExtra"),
@@ -1244,8 +1245,125 @@ ui = dashboardPage(
                 )
               ),
       ),
-      
+      # Aquí se empieza con la programación
       # Gráfico de dispersión
+      tabItem(tabName = "scatterplot_1",
+              fluidRow(
+                box(
+                  title = "Introducción a los Gráficos de Dispersión", 
+                  status = NULL,
+                  class = "box-black", 
+                  solidHeader = TRUE, 
+                  width = 12,
+                  collapsible = TRUE,
+                  HTML('
+                     <h1 style="text-align: center;">¿Qué es un Gráfico de Dispersión?</h1>
+                     '),
+                  p('Un', tags$b('gráfico de dispersión'), 'es una representación visual
+                    que muetra la relación entre dos variables numéricas mediante puntos
+                    colocados en un plano cartesiano. Cada punto representa una observación
+                    con valores en los ejes X e Y.'),
+                  tags$div(style = "text-align: center;",
+                  tags$img(src = "https://raw.githubusercontent.com/holtzy/data_to_viz/master/img/section/ScatterPlotSmall.png", 
+                  height = "100px", width = "auto"),
+                  tags$div(style = "margin-top: 10px") # Margen para la imagen que hay.
+                  ),
+                  p('Como el diagrama de dispersión mide la relación entre dos variables, a menudo
+                    se acompaña de una', tags$b('correlación de cálculo del coeficiente'), 'que generalmente trata de medir
+                    la relación lineal.'),
+                  p('Sin embargo, otros tipos de relación se pueden detectar mediante diagramas de dispersión, y una
+                    tarea común consiste en ajustar un modelo que explique Y en función de X. Aquí hay algunos
+                    patrones que se pueden detectar haciendo un diagrama de dispersión.'),
+                  tags$div(style = "text-align: center;",
+                           tags$img(src = "https://www.data-to-viz.com/graph/scatter_files/figure-html/unnamed-chunk-2-1.png", 
+                                    height = "500px", width = "auto")
+                  ),
+                  p('Hay que recordar que el gráfico de dispersión es una representaión', tags$b('bidimensional'),
+                    'utilizada para visualizar la relación entre dos variables cuantitativas continuas.
+                    Cada observación se representa como un punto en el plano cartesiano, donde el eje X
+                    corresponde a la variable independiente (predictora) y el eje Y a la variable dependiente (respuesta).
+                    Este tipo de gráfico permite', tags$b('identificar patrones estructurales en los datos'), ', tales como:',
+                    tags$li("Tendencias lineales o no lineales."),
+                      tags$li("Fuerza y dirección de la asociación (positiva o negativa)."),
+                      tags$li("Presencia de heterocedasticidad."),
+                      tags$li("Agrupamientos (cluster)."),
+                      tags$li("Valores atípicos (outliers)."),
+                    ),
+                  tags$footer(
+                    style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
+                    "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
+                  )
+                ),
+                
+                box(
+                  title = "Características d eun gráfico de dispersión", 
+                  status = NULL,
+                  class = "box-black", 
+                  solidHeader = TRUE, 
+                  width = 12,
+                  collapsible = TRUE,
+                  collapsed = TRUE,
+                  
+                  p(
+                    tags$ul(tags$b("1. Bidimensionalidad"),
+                      tags$li("Representa ds variables cuantitativas continuas."),
+                      tags$li("Cada punto es una observación con un par de valores (X, Y).")
+                      ),
+                    tags$ul(tags$b("2. Puntos individuales"),
+                            tags$li("Cada punto refleja una observación única."),
+                            tags$li("La ubicación exacta transmite información precisa sobre la relación
+                                    entre variables.")
+                            ),
+                    tags$ul(tags$b("3. Asociación visual"),
+                      tags$li("Permite identificar visualmente relaciones entre variables:",
+                              tags$ol(
+                                tags$li(tags$b("Dirección"),": positiva, negativa o nula."),
+                                tags$li(tags$b("Forma"), ": lineal, curvilínea, exponencial, etc."),
+                                tags$li(tags$b("Fuerza"), ": qué tan 'ajustados' están los puntos a un patrón.")  
+                              ),
+                              
+                              )
+                    ),
+                    tags$ul(
+                      tags$b("4. Detección de outliers"),
+                      tags$li("Facilita la identificación de valores atípicos o extremos que se
+                              desvían del patrón general.")
+                    ),
+                    tags$ul(
+                      tags$b("5. Detección de grupos o clusters"),
+                      tags$li("Puede mostrar agrupaciones naturales de datos, indicando segmentos,
+                              categorías ocultas o comportamientos diferenciados.")
+                    ),
+                    tags$ul(
+                      tags$b("6. Distribución conjunta"),
+                      tags$li("Es una forma efectiva de representar la", 
+                      tags$b(" distribución conjunta (bivariada)")),
+                      " de las dos variables."
+                    ),
+                    tags$ul(
+                      tags$b("7. No requiere supuestos estadísticos"),
+                      tags$li("A diferencia de modelos formales, el scatterplot
+                              es puramente exploratorio y no depende de supuestos
+                              como normalidad o linealidad.")
+                    ),
+                    tags$ul(
+                      tags$b("8. Escalabilidad limitada"),
+                      tags$li("No es adecuado para bases de datos muy grandes
+                              (miles de puntos), ya que puede haber overplotting.
+                              En esos casos se usan alternativas como:",
+                              tags$li("Gráficos de densidad bivariada."),
+                              tags$li("Hexbin plots."),
+                              tags$li("Contour plots.")
+                              )
+                    ),
+                    tags$ul(
+                      
+                    )
+                    ),
+                ),
+                
+              )
+              ),
       tabItem(tabName = "scatterplot",
               fluidRow(
                 box(title = "¿Qué es un Gráfico de Dispersión?", 
@@ -1388,7 +1506,7 @@ ui = dashboardPage(
                          una observación en el conjunto de datos.
                          </p>
                          <br><br><hr>
-                         <h2>¿Que muestra este gráfico?</h2>
+                         <h2>¿Qué muestra este gráfico?</h2>
                          <p>
                          Este gráfico de dispersión muestra la relación entre el largo (<code>Sepal.Length</code>) y el ancho
                          (<code>Sepal.Width</code>) del sépalo en las flores del conjunto de datos <code>iris</code>.
