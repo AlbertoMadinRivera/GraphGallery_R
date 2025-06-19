@@ -1401,18 +1401,29 @@ ui = dashboardPage(
                     collapsible = TRUE,
                     collapsed = TRUE,
                     width = 12,
-                    HTML('<p>
-                         Usando el conjunto de datos <code>mtcars</code>, tomaremos las variables <code>mpg</code> (millas por galón) y
-                         <code>wt</code> (peso por vehículo) para crear el gráfico de dispersión.
-                         </p>'),
-                    verbatimTextOutput("s"),
-                    plotOutput("s_1"),
-                    HTML('<p>
-                         Este código genera un gráfico de dispersión donde cada punto representa un automóvil
-                         del conjunto de datos <code>mtcars</code>, con su peso en el eje X y su eficiencia de combustible
-                         en el eje Y. Esto te permitirá visualizar la relación entre el peso y la eficiencia de combustible
-                         de los autos.
-                         </p>'),
+                    p("Supongamos que queremos crear ", tags$b("un gráfico de dispersión"), " que
+                      solo muestre la relación entre el largo y el ancho del pétalo (", 
+                      tags$code("Petal.Length"), " y ", tags$code("Petal.Width"),") 
+                      para cada especie. Esto puede ser útil para visualizar si existe una 
+                      separación natural entre especies según estas dos variables."),
+                    verbatimTextOutput("scatter_code_1"),
+                    div(
+                      style = "display: flex; justify-content: center; align-items: center; height: 400px;",
+                      plotOutput("scatter_code_1_plot1", height = "400px", width = "400px")
+                    ),
+                    p(tags$b("Interpretación del código:"),
+                      tags$ul(
+                        tags$li("Cada punto representa una flor."),
+                        tags$li("El color indica la especie (azul, rojo o verde,
+                                según su orden en) ", tags$code("levels(iris$Specie)"), "."),
+                        tags$li("Se observa que las especies están bastante bien separadas
+                                según estas dos variables, especialmente ", tags$i("setosa"),
+                                ", que aparece aislada del resto.")
+                      ),
+                      p("Este tipo de gráfico es fundamental en análisis exploratorios,
+                        especialmente cuando se quiere entender cómo e relacionan dos
+                        variables numéricas o si hay patrones distintos entre grupos.")
+                    ),
                     tags$footer(
                       style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
                       "Recuerda que puedes agregar la línea e tendencia al gráfico de dispersión - ", Sys.Date()),
@@ -2470,20 +2481,42 @@ ggplot_bar = ggplot(mtcars, aes(x = as.factor(cyl))) +
 # Convertir el gráfico de ggplot a gráfico interactivo con Plotly
 ggplotly(ggplot_bar)'})
 
+output$scatter_code_1 = renderText({
+  '# Cargar datos iris
+data(iris)
+
+# Crear gráfico de dispersión en R Base
+plot(iris$Petal.Length, iris$Petal.Width,
+     col = as.numeric(iris$Species),
+     pch = 19,
+     xlab = "Largo del Pétalo",
+     ylab = "Ancho del Pétalo",
+     main = "Relación entre Largo y Ancho del Pétalo por Especie")
+
+# Agregar leyenda
+legend("topleft",
+       legend = levels(iris$Species),
+       col = 1:3,
+       pch = 19)'})
 
 
-
-output$s_1 = renderPlot({
-  # Cargar el conjunto de datos mtcars
-  data(mtcars)
+output$scatter_code_1_plot1 = renderPlot({
+  # Cargar datos iris
+  data(iris)
   
-  # Crear un gráfico de dispersión con R base
-  plot(mtcars$wt, mtcars$mpg, 
-       main = "Gráfico de Dispersión: Peso vs Millas por Galón",
-       xlab = "Peso del Vehículo (wt)", 
-       ylab = "Millas por Galón (mpg)", 
-       pch = 19, # Estilo de los puntos
-       col = "blue") # Color de los puntos
+  # Crear gráfico de dispersión en R Base
+  plot(iris$Petal.Length, iris$Petal.Width,
+       col = as.numeric(iris$Species),
+       pch = 19,
+       xlab = "Largo del Pétalo",
+       ylab = "Ancho del Pétalo",
+       main = "Relación entre Largo y Ancho del Pétalo por Especie")
+  
+  # Agregar leyenda
+  legend("topleft",
+         legend = levels(iris$Species),
+         col = 1:3,
+         pch = 19)
 })
 
 
