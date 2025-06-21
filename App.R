@@ -406,7 +406,7 @@ ui = dashboardPage(
       tabItem(
         tabName = "r_0",
         fluidRow(
-          box(title = "¿Qué es R?", 
+          box(title = tagList(icon("comment"), " ¿Qué es R?"), 
               status = NULL,
               class = "box-black",
               solidHeader = TRUE,
@@ -599,7 +599,7 @@ ui = dashboardPage(
       tabItem(
         tabName = "r_2",
         fluidRow(
-          box(title = "¿Qué es ggplot2?", 
+          box(title = tagList(icon("comment")," ¿Qué es ggplot2?"), 
               status = NULL,
               class = "box-black",
               solidHeader = TRUE,
@@ -712,7 +712,7 @@ ui = dashboardPage(
       tabItem(
         tabName = "r_3",
         fluidRow(
-          box(title = "¿Qué es Plotly?", 
+          box(title = tagList("¿Qué es Plotly?"), 
               status = NULL,
               class = "box-black",
               width = 12,
@@ -779,163 +779,200 @@ ui = dashboardPage(
       
       # Introducción gráfico de barras
       tabItem(
+        
         tabName = "barplot__1",
+        
         fluidRow(
+          
           box(
-            title = "Introducción a los Gráficos de Barras", 
+            title = tagList(icon("comment"), " Introducción a los Gráficos de Barras"), 
             status = NULL,
             class = "box-black",
             solidHeader = TRUE,
             width = 12,
             collapsible = TRUE,
-            HTML('
-                 <h1 style="text-align: center;">¿Qué es un Gráfico de Barras?</h1>
-                 
-                 <p>
-                 Un <b>gráfico de barras</b> es un tipo de visualización de datos que utiliza barras rectangulares para
-                 representar y comparar cantidades o valores entre diferentes categorías. Las barras tienen una longitud
-                 o altura proporcional al valor que representan, lo que permite una comparación visual fácil y rápida
-                 entra las categorías. Estos gráficos son ampliamente utilizados debido a su simplicidad y claridad, y se
-                 emplean para mostrar datos categóricos o discretos en los que se desea destacar las diferencias entre
-                 distintos grupos.
-                 En un gráfico de barras, las categorías se ubican generalmente en el eje horizontal (eje X), mientras que
-                 los valores asociados a cada categoría se representan en el eje vertical (eje Y). Dependiendo de la
-                 orientación de las barras, estas pueden ser verticales u horizontales, y cada barra refleja el
-                 valor de una categoría específica.
-                 </p>
-                 '),
+            p(
+              tags$h1(
+                style = "text-align: center;",
+                "¿Qué es un Gráfico de Barras?"
+              )
+            ),
+            p("Un ", tags$b("gráfico de barras"), "es un tipo
+              de visualización de datos que utiliza barras rectangulares para representar
+              y comparar cantidades o valores entre diferentes categorías. Las barras tienen
+              una longitud o altura proporcional al valor que representan, lo que permite
+              una comparación visual fácil y rápida entre las categorías. Estos gráficos
+              son ampliamente utilizados debido a su simplicidad y claridad, y se emplean
+              para mostrar datos categóricos o discretos en los que se desean
+              destacar las diferencias entre distintos grupos. En un gráfico
+              de barras, las cateogrías se ubican generalmente en el eje horizontal (eje X), mientras
+              que los valores asociados a cada categoría se representan en el eje vertical (eje Y). Dependiendo
+              la orientación de las barras, éstas estas pueden ser verticales u horizontales, y cada barra
+              refleja el valor de una categoría específica."),
             tags$div(style = "text-align: center;",
                      tags$img(src = "https://raw.githubusercontent.com/fkellner/D3-graph-gallery/master/img/section/Bar150.png", 
                               height = "100px", width = "auto")
-            ),
+                     ),
+            tags$br(),
             tags$footer(
               style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
               "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
           )
         ),
+        
         box(
-          title = "Características de un gráfico de barras", 
+          title = tagList(icon("clipboard"), " Características de un gráfico de barras"), 
           status = NULL,
           class = "box-black",
           solidHeader = TRUE,
           width = 12,
           collapsible = TRUE,
           collapsed = TRUE,
-          HTML('
-               <h2 style="text-align: center;">Características de un gráfico de barras</h2>
-               
-               <p>
-               <li><b>Ejes</b>:</li>
-                <ol>
-                  <li>El eje <b>X</b> (horizontal) representa las <b>categorías</b> o grupos a comparar.</li>
-                  <li>El eje <b>Y</b> (vertical) muestra las <b>magnitudes</b> o valores correspondientes a esas categorías.</li>
-                </ol>
-                <li><b>Barras</b>: Las barras son representaciones gráficas de las categorías. En un gráfico de barras vertical,
-                la <b>altura</b> de la barra es proporcional al valor de la categoría; en un gráfico de barras horizontal,
-                la <b>longitud</b> de la barra se ajusta según el valor de la categoría.<li>
-                <li><b>Color</b>: A menudo, las barras pueden ser coloreadas para diferenciar visualmente las categorías o
-                para resaltar la información específica. El uso del color puede mejorar la legibilidad y
-                ayudar a identificar patrones o agrupaciones dentro de los datos.</li>
-                <li><b>Distribución de las barras</b>: Las barras pueden ordenarse de diferentes maneras: por valor, de forma
-                ascendente o descendente, o por cualquier otro criterio como un orden alfabético o temporal,
-                según lo que se desea resaltar en los datos.</li>
-                <li><b>Anotaciones</b>: Los gráficos de barras suelen incluir etiquetas y títulos para explicar los valores
-                representados. Estas etiquetas pueden estar ubicadas en la parte superior de cada barra o dentro de ellas para una mayor
-                claridad.</li>
-               </p>
-               
-               <p>
-               Los gráficos de barras son útiles en una amplia variedad de contextos,
-               desde la presentación de resultados hasta el análisis exploratorio de datos. En <b>ciencia de datos</b>, los gráficos
-               de barras son fundamentales para comparar categorías, visualizar distribuciones y descubrir patrones en grandes
-               volúmenes de datos. Son una herramienta clave cuando se desea mostrar la frecuencia, la cantidad o
-               cualquier tipo de medición asociada a diferentes cateogrías.
-               </p>
-               
-               <p>
-               En esta sección se mostrará algunos ejemplos de cómo crear grágicos de barras utilizando los tresn enfoques:
-               <b>R Base</b>, <code>ggplot2</code> y <code>plotly</code>. A continuación, se mostrarán ejemplos sencillos de cómo generar un gráfico de
-               barras en cada una de estas librerías, permitiendo explorar las diferencias y ventajas de cada enfoque.
-               </p>
-               '),
+          p(
+            tags$h2(
+              style = "text-align: center;",
+              "Características de un gráfico de barras"
+            )
+          ),
+          p("Algunas de las características que distinguen al gráfico de barras son las siguientes:"),
+          p(
+            tags$ul(
+              tags$li(tags$b("Ejes:")),
+              tags$ol(
+                tags$li("El eje", tags$b("X"), " (horizontal), representa las ", tags$b("categorías"), " o grupos a comparar."),
+                tags$li("El eje", tags$b("Y"), " (vertical), representa las ", tags$b("magnitudes"), " o valores correspondientes a esas cateogrías.")
+              )
+            ),
+            tags$ul(
+              tags$li(tags$b("Barras:"), " Las barras son representaciones 
+                      gráficas de las categorías. En un gráfico de barras
+                      vertical, la ", tags$b("altura"), " de la barra es 
+                      proporcional al valor de la categoría; en un gráfico
+                      de barras horizontal, la ", tags$b("longitud"), " de la 
+                      barra se ajusta según el valor de la categoría.")
+            ),
+            tags$ul(
+              tags$li(tags$b("Color:"), " A menudo, las barras pueden ser coloreadas
+                      para diferenciar visualmente las categorías o para resaltar la
+                      información específica. El uso del color puede mejorar la legibilidad
+                      y ayudar a identificar patrones o agrupaciones dentro de los datos.")
+            ),
+            tags$ul(
+              tags$li(tags$b("Distribución de las barras:"), " Las barras pueden
+                      ordenarse de diferentes maneras: como valores, de manera
+                      ascendente o descendente, o por cualquier otro criterio
+                      como un orden alfabético o temporal, según lo que se desea
+                      resaltar en los datos.")
+              ),
+            tags$ul(
+              tags$li(tags$b("Anotaciones:"), " Los gráficos de barras suelen
+                      incluir etiquetas y títulos para explicar los valores representados.
+                      Estas etiquetas pueden estar ubicadas en la parte superior de cada barra
+                      o dentro de ellas para una mayor claridad.")
+            )
+          ),
+          p("Los gráficos de barras son útiles para una amplia variedad de contextos,
+            desde la presentación de resultados hasta el análisis exploratorio de datos.
+            En ", tags$b("ciencia de datos"), ", los gráficos de barras son fundamentales
+            para comparar categorías, visualizar distribuciones y descubrir patrones en
+            grandes volúmenes de datos. Son una herramienta clave cuando se desea mostrar
+            la frecuencia, la cantidad o cualquier tipo de medición asociada a diferentes
+            categorías."),
+          p("Dentro de esta sección se mostrarán algunos ejemplos de cómo crear gráficos de
+            barras utilizando los tres enfoques: ", tags$code("R base"), ", ",
+            tags$code("ggplot2"), ", y", tags$code("plotly"), ". En las siguientes secciones
+            se mostrarán ejemplos sencillos de cómo generar un gráfico de barras en cada una de estas
+            librerías y en código base, permitiendo explorar las diferencias y ventajas de cada 
+            enfoque."),
           tags$footer(
             style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
             "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
-          )
         )
-      )
-      ),
+        )
+        )
+        ),
 
       
       # Gráfico de barras base
       tabItem(
         tabName = "barplot_base",
         fluidRow(
-          box(title = "Introducción al Gráfico de Barras en R Base", 
+          box(title = tagList(icon("comment"), " Introducción al Gráfico de Barras en R Base"), 
               status = NULL,
               class = "box-black", 
               solidHeader = TRUE, 
               width = 12,
               collapsible = TRUE,
-              HTML('
-                   <h1 style="text-align: center;">Gráfico de barras en <b>R Base</b></h1>
-                   
-                   <p>
-                   Un gráfico de barras en <b>R Base</b> es una representación visual de datos
-                   donde las categorías se muestran en el eje X y la altura de cada barra
-                   representa la frecuencia o valor asociado a cada categoría en el eje Y. Este
-                   tipo de gráfico es útil para comparar diferntes categorías o grupos de datos.
-                   
-                   A continuación trabajaremos con el conjunto de datos de la librería
-                   <b>Iris</b>, siendo conocido en <code>R</code> que contiene
-                   medidas de 150 flores de iris, distribuidas en 3 especies: <b>setosa</b>, <b>versicolor</b> y
-                   <b>virginica</b>m con 4 características: largo y ancho del sépalo, y largo y ancho del
-                   pétalo
-                   </p>
-                   
-                   <p>
-                   Supongamos que queremos crear un gráfico de barras que muestre la cantidad
-                   de observaciones para cada especie en el conjunto de datos Iris.
-                   Esto puede ser útil para ver cómo se distribuyen las especies.
-                   </p>
-                   '),
+              p(
+                tags$h1(
+                  style = "text-align: center;",
+                  "Gráfico de Barras en ", tags$b("R Base")
+                  )
+                ),
+              p("Un gráfico de barras en ", tags$b("R Base"),
+                " es una representación visual de datos donde las categorías
+                se muestran en el eje X y la altura de cada barra representa
+                la frecuencia o valor asociado a cada categoría en el eje Y.
+                Este tipo de gráfico es útil para comparar diferentes categorías
+                o grupos de datos. A continuación trabajaremos con el conjunto de datos
+                de la librería ", tags$code("Iris"), ", siendo
+                conocido en ", tags$code("R"), "como una de las bases de datos
+                más accesibles que contiene medidas de 150 flores de iris, distribuidas en
+                3 especies: ",
+                tags$ul(
+                  tags$li(tags$i("setosa.")),
+                  tags$li(tags$i("versicolor.")),
+                  tags$li(tags$i("virginica."))
+                  ), 
+                "Cuenta con 4 características: ",
+                tags$ul(
+                  tags$li(tags$i("largo y ancho del sépalo.")),
+                  tags$li(tags$i("largo y ancho del pétalo."))
+                  )
+                ),
+              tags$hr(),
+              p("Supongamos que queremos crear un gráfico de barras
+                que muestre la cantidad de observaciones para cada especie
+                en el conjunto de datos. Esto puede ser útil para ver cómo se
+                distribuyen las especies."),
               verbatimTextOutput("barras__1"),
               div(
                 style = "display: flex; justify-content: center; align-items: center; height: 400px;",
                 plotOutput("barras__2", height = "400px", width = "400px")
               ),
-              HTML('
-                   <p>
-                   Explicación del código:
-                   </p>
-                   
-                   <p>
-                   <ul>
-                    <li><strong>data(iris):</strong> Carga el conjunto de datos Iris.</li>
-                    <li><strong>table(iris$Species):</strong> Calcula la frecuencia de cada especie en el conjunto de datos.</li>
-                    <li><strong>barplot(...):</strong> Crea el gráfico de barras con las especificaciones:
-                      <ul>
-                        <li><strong>main:</strong> Título del gráfico.</li>
-                        <li><strong>col:</strong> Color de las barras (en este caso, "skyblue").</li>
-                        <li><strong>ylab:</strong> Etiqueta para el eje Y (cantidad de observaciones).</li>
-                        <li><strong>xlab:</strong> Etiqueta para el eje X (especies).</li>
-                        <li><strong>border:</strong> Color del borde de las barras (negro).</li>
-                      </ul>
-                    </li>
-                  </ul>
-                   </p>
-                   
-                   <p>
-                   De esta forma, el gráfico será útil cuando se quiera visualizar comparaciones entre diferentes categorías
-                   de datos.
-                   </p>
-                   '),
+              tags$hr(),
+              p(
+                tags$b("Explicación del código:"),
+                p(
+                  tags$ul(
+                    tags$li(tags$code("data(iris)"), ": Carga el conjunto de datos Iris."),
+                    tags$li(tags$code("table(iris$Species)"), ": Calcula la frecuencia de cada especie en el
+                            conjunto de datos."),
+                    tags$li(tags$code("barplot(...)"), ": Crea el gráfico de barras con las siguientes especificaciones:",
+                            tags$ol(
+                              tags$li(tags$code("main ="), ": Título del gráfico."),
+                              tags$li(tags$code("col ="), ": Color de las barras 
+                                      (en este caso se elige el color", tags$code('"skyblue"'), ")."),
+                              tags$li(tags$code("ylab ="), ": Etiqueta para el eje Y (cantindad de observaciones)."),
+                              tags$li(tags$code("xlab ="), ": Etiqueta para el eje X (especies)."),
+                              tags$li(tags$code("border ="), ": Color del borde de las barras (en este caso será negro).")
+                              )
+                            )
+                  )
+                ),
+                "De esta forma, el gráfico será especialmente útil cuando
+                se desee visualizar comparciones claras y directas entre diferentes
+                categorías de datos. Gracias a su diseño y visualidad, el gráfico de barras en r base,
+                permite identificar rápidamente diferencias, patrones o similitudes entre
+                dos grupos representados, facilitando así la interpretación de la información
+                y la toma de decisiones basada en los datos de forma sencilla con un código base."
+                ),
               tags$footer(
                 style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
                 "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
               )
               ),
-          box(title = "Gráfico de Barras en Horizontal R Base", 
+          box(title = tagList(icon("laptop-code"), " Gráfico de Barras en Horizontal R Base"), 
               status = NULL,
               class = "box-black", 
               solidHeader = TRUE, 
@@ -950,7 +987,7 @@ ui = dashboardPage(
                 )
               ),
           
-          box(title = "Gráfico de barras con Paleta de Colores y Borde NA R base", 
+          box(title = tagList(icon("laptop-code"), " Gráfico de barras con Paleta de Colores y Borde NA R base"), 
               status = NULL,
               class = "box-black", 
               solidHeader = TRUE, 
@@ -965,7 +1002,7 @@ ui = dashboardPage(
               )
           ),
           
-          box(title = "Gráfico de barras con Color de Borde y leyenda R Base", 
+          box(title = tagList(icon("laptop-code"), " Gráfico de barras con Color de Borde y leyenda R Base"), 
               status = NULL,
               class = "box-black", 
               solidHeader = TRUE, 
@@ -980,7 +1017,7 @@ ui = dashboardPage(
               )
           ),
           
-          box(title = "Gráfico de Barras más delgadas R Base", 
+          box(title = tagList(icon("laptop-code"), " Gráfico de Barras más delgadas R Base"), 
               status = NULL,
               class = "box-black", 
               solidHeader = TRUE, 
@@ -995,7 +1032,7 @@ ui = dashboardPage(
               )
           ),
           box(
-            title = "Ejemplo: Distribución de Vehículos según el Número de Cilindros en el conjunto de datos de mtcars (R Base)", 
+            title = tagList(icon("code"), " Ejemplo: Distribución de Vehículos según el Número de Cilindros en el conjunto de datos de mtcars (R Base)"), 
             status = NULL,
             class = "box-black", 
             solidHeader = TRUE, 
@@ -1024,34 +1061,36 @@ ui = dashboardPage(
               style = "display: flex; justify-content: center; align-items: center; height: 500px;",
               plotOutput("barras__12", height = "500px", width = "500px")
             ),
-            HTML('
-                 <p>
-                 El <b>gráfico de barras</b> en R base es una herramienta
-                 poderosa para mostrar la distribución de datos categóricos, es decir,
-                 para contar la frecuencia de diferentes categorías dentro de un conjunto de datos.
-                 Este tipo de gráfico es especialmente útil cuando se desea comparar cantidades en
-                 diferentes grupos, como el número de cilindros de los vehículos en el conjunto
-                 de datos <code>mtcars</code>.
-                 Algunas de las aplicaciones comunes del gráfico de barras incluyen:
-                  <li><b>Análisis de la frecuencia</b> de categorías de un
-                  conjuto de datos (por ejemplo, la cantidad de vehículos con diferentes
-                  números de cilindros).</li>
-                  <li><b>Visualización clara y directa</b> de la distribución de datos categóricos
-                  como clasificaciones o respuestas a encuestas.</li>
-                  <li><b>Presentaciones científicas y profesionales</b>, donde se necesita resaltar
-                  de manera efectiva la comparación entre diferentes categorías de datos.</li>
-                 El gráfico de barras permite a los usuarios observar de manera rápida
-                 y efectiva las diferencias en las cantidades de diferentes categorías,
-                 facilitando la toma de decisiones o la comunicación de hallazgos en
-                 diversas áreas de estudio, como ingeniería, economía, ciencias sociales,
-                 y más.
-                 </p>
-                 '),
+            p("El ", tags$b("gráfico de barras"), " en", tags$code("R base"), " es una
+              herramienta poderosa para mostrar la distribución de datos categóricos,
+              es decir, para contar la frecuencia de diferentes categorías dentro
+              de un conjunto de datos. Este tipo de gráfico es especialmente
+              útil cuando se desea comparar cantidades en diferentes grupos,
+              como el número de cilindros de los vehículos en el conjunto
+              de datos", tags$code("mtcars"), ". Algunas de las aplicaciones
+              omunes del gráfico de barras incluyen: "),
+            p(
+              tags$ul(
+                tags$li(tags$b("Análisis de la frecuencia: "), "Ayuda a mantener la
+                        relación de las categorías en conjunto de los datos (por ejemplo,
+                        la cantidad de vehículos con diferentes números de cilindros)."),
+                tags$li(tags$b("Visualización clara y directa: "), "Ayuda a visualizar
+                        la distribución de datos categóricos como clasificaciones o respuestas a
+                        encuestas."),
+                tags$li(tags$b("Presentciones científicas y profesionales: "), "Permite
+                        observar dónde se necesita resalta de manera efectiva la
+                        comparación entre diferentes categorías de datos.")
+              )
+            ),
+            p("El gráfico de barras permite a los usuarios observar de manera
+              rápida y efectiva las diferencias en las cantidades de diferentes categorías,
+              facilitando la toma de decisiones o la comunicación de hallazgos en diversas
+              áreas de estudio, como ingeniería, economía, ciencias sociales, y mucho más."),
             tags$footer(
               style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
               "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
             )
-          ),
+          )
         )
       ),
       
@@ -1243,7 +1282,7 @@ ui = dashboardPage(
                       "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
                     )
                 )
-              ),
+              )
       ),
       # Aquí se empieza con la programación
       # Gráfico de dispersión
@@ -1320,7 +1359,7 @@ ui = dashboardPage(
                                 tags$li(tags$b("Dirección"),": positiva, negativa o nula."),
                                 tags$li(tags$b("Forma"), ": lineal, curvilínea, exponencial, etc."),
                                 tags$li(tags$b("Fuerza"), ": qué tan 'ajustados' están los puntos a un patrón.")  
-                              ),
+                              )
                               
                               )
                     ),
@@ -1364,21 +1403,24 @@ ui = dashboardPage(
                     style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
                     "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
                   )
-                ),
+                )
                 
               )
               ),
       tabItem(tabName = "scatterplot",
               fluidRow(
-                box(title = "Introducción al Gráfico de dispersión en R Base", 
+                box(title = tagList(icon("comment"), " Introducción al Gráfico de dispersión en R Base"), 
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE, 
                     width = 12,
                     collapsible = TRUE,
-                    HTML('
-                     <h1 style="text-align: center;">Gráfico de Dispersión en <b>R Base</b></h1>
-                     '),
+                    p(
+                      tags$h1(
+                        style = "text-align: center;",
+                        "Gráfico de Dispersión en ", tags$b("R base")
+                      )
+                    ),
                     p('Un ', tags$b("gráfico de dispersión"), "en ", tags$code("R base"), " es una
                       representación visual que permite mostrar la relación entre dos variables numéricas.
                       Cada punto en el gráfico representa una observación, con su posición determinada por los
@@ -1393,8 +1435,8 @@ ui = dashboardPage(
                       "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
                     )
                 ),
-                box(title = tagList(icon("elementor"), 
-                                    "Ejemplo de Gráfico en R base"), 
+                box(title = tagList(icon("code"), 
+                                    " Ejemplo de Gráfico en R base"), 
                     status = NULL,
                     class = "box-black", 
                     solidHeader = TRUE,
@@ -1426,10 +1468,96 @@ ui = dashboardPage(
                     ),
                     tags$footer(
                       style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
-                      "Recuerda que puedes agregar la línea e tendencia al gráfico de dispersión - ", Sys.Date()),
+                      "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
+                    )
                     
+                ),
+                fluidRow(
+                # Ejemplo 1.
+                box(
+                  title = "Añadiendo una línea de tendencia central (regresión lineal)", 
+                  status = NULL,
+                  class = "box-black", 
+                  solidHeader = TRUE, 
+                  width = 6,
+                  collapsible = TRUE,
+                  collapsed = TRUE,
+                  p("Se añade una línea de tendencia con ",
+                    tags$code("abline()"), " usando un modelo lineal ",
+                    tags$code("lm()"), ". Esto ayuda a visualizar la relación
+                    global entre las dos variables."),
+                  verbatimTextOutput("Ejemplo_1_scatter"),
+                  plotOutput("Ejemplo_1_scatter_plot"),
+                  tags$footer(
+                    style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
+                    "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
+                  )
+                ),
+                # Ejemplo 2.
+                box(
+                  title = tagList("Cambiar los tipos de punto (", tags$code("pch"), ") por
+                                  sìmbolos personalizados"), 
+                  status = NULL,
+                  class = "box-black", 
+                  solidHeader = TRUE, 
+                  width = 6,
+                  collapsible = TRUE,
+                  collapsed = TRUE,
+                  p('Se utiliza el argumento', tags$code('pch = '),
+                    " con diferentes símbolos para cada especie, lo cual
+                    mejora la distinción visual, especialmente para personas
+                    con daltonismo."),
+                  verbatimTextOutput("Ejemplo_2_scatter"),
+                  plotOutput("Ejemplo_2_scatter_plot"),
+                  tags$footer(
+                    style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
+                    "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
+                    )
+                  )
+                ),
+                fluidRow(
+                # Ejemplo 3.
+                box(
+                  title = "Usar variables con relación negativa", 
+                  status = NULL,
+                  class = "box-black", 
+                  solidHeader = TRUE, 
+                  width = 6,
+                  collapsible = TRUE,
+                  collapsed = TRUE,
+                  p("Aquí se genera una variable
+                    inversamente relacionada a ", tags$code("Petal.Length"), " para simular una
+                    relación negativa. La línea de tendencia muestra esta correlación negativa
+                    claramente."),
+                  verbatimTextOutput("Ejemplo_3_scatter"),
+                  plotOutput("Ejemplo_3_scatter_plot"),
+                  tags$footer(
+                    style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
+                    "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
+                  )
+                ),
+                # Ejemplo 4.
+                box(
+                  title = "Estilo minimalista con colores profesionales", 
+                  status = NULL,
+                  class = "box-black", 
+                  solidHeader = TRUE, 
+                  width = 6,
+                  collapsible = TRUE,
+                  collapsed = TRUE,
+                  p("Este enfoque usa colores más
+                    sobrios, sin título principal (para estilo limpio),
+                    punto más definido y leyenda sin borde (", 
+                    tags$code("bty = 'n'"), "), ideal para
+                    dashboards o informes profesionales."),
+                  verbatimTextOutput("Ejemplo_4_scatter"),
+                  plotOutput("Ejemplo_4_scatter_plot"),
+                  tags$footer(
+                    style = "background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 14px; color: #6c757d;",
+                    "Fuente: Elaboración propia a partir de datos Alberto Madin Rivera - ", Sys.Date()
+                    )
+                  )
                 )
-                
               )
       ),
       
@@ -1938,6 +2066,7 @@ ui = dashboardPage(
     )
   )
 )
+
 
 ################################################################################
 ################################################################################
@@ -2694,6 +2823,152 @@ output$plot__2 = renderPlot({
   ggplot(df, aes(x = categorias, y = valores)) +
     geom_bar(stat = "identity", fill = "skyblue") +
     labs(title = "Gráfico de Barras en ggplot2", x = "Categorías", y = "Valores")
+})
+
+output$Ejemplo_1_scatter = renderText("data(iris)
+
+# Gráfico de dispersión
+plot(iris$Petal.Length, iris$Petal.Width,
+     col = as.numeric(iris$Species),
+     pch = 19,
+     xlab = 'Largo del Pétalo',
+     ylab = 'Ancho del Pétalo',
+     main = 'Relación con Línea de Tendencia')
+
+# Línea de regresión (lineal)
+modelo <- lm(Petal.Width ~ Petal.Length, data = iris)
+abline(modelo, col = 'black', lwd = 2, lty = 2)
+
+legend('topleft',
+       legend = c(levels(iris$Species), 'Tendencia Lineal'),
+       col = c(1:3, 'black'),
+       pch = c(19, 19, 19, NA),
+       lty = c(NA, NA, NA, 2),
+       lwd = c(NA, NA, NA, 2))
+")
+
+output$Ejemplo_1_scatter_plot = renderPlot({
+  data(iris)
+  
+  # Gráfico de dispersión
+  plot(iris$Petal.Length, iris$Petal.Width,
+       col = as.numeric(iris$Species),
+       pch = 19,
+       xlab = "Largo del Pétalo",
+       ylab = "Ancho del Pétalo",
+       main = "Relación con Línea de Tendencia")
+  
+  # Línea de regresión (lineal)
+  modelo <- lm(Petal.Width ~ Petal.Length, data = iris)
+  abline(modelo, col = "black", lwd = 2, lty = 2)
+  
+  legend("topleft",
+         legend = c(levels(iris$Species), "Tendencia Lineal"),
+         col = c(1:3, "black"),
+         pch = c(19, 19, 19, NA),
+         lty = c(NA, NA, NA, 2),
+         lwd = c(NA, NA, NA, 2))
+  
+})
+
+output$Ejemplo_2_scatter = renderText('pch_types <- c(0, 2, 3)  # Cuadrado, triángulo, cruz
+species_index <- as.numeric(iris$Species)
+
+plot(iris$Petal.Length, iris$Petal.Width,
+     col = species_index,
+     pch = pch_types[species_index],
+     xlab = "Largo del Pétalo",
+     ylab = "Ancho del Pétalo",
+     main = "Diferentes Símbolos por Especie")
+
+legend("topleft",
+       legend = levels(iris$Species),
+       col = 1:3,
+       pch = pch_types)')
+
+output$Ejemplo_2_scatter_plot = renderPlot({
+  pch_types <- c(0, 2, 3)  # Cuadrado, triángulo, cruz
+  species_index <- as.numeric(iris$Species)
+  
+  plot(iris$Petal.Length, iris$Petal.Width,
+       col = species_index,
+       pch = pch_types[species_index],
+       xlab = "Largo del Pétalo",
+       ylab = "Ancho del Pétalo",
+       main = "Diferentes Símbolos por Especie")
+  
+  legend("topleft",
+         legend = levels(iris$Species),
+         col = 1:3,
+         pch = pch_types)
+})
+
+output$Ejemplo_3_scatter = renderText('# Crear una variable artificial inversamente proporcional
+iris$Inverse.Petal <- max(iris$Petal.Length) - iris$Petal.Length
+
+plot(iris$Inverse.Petal, iris$Petal.Width,
+     col = as.numeric(iris$Species),
+     pch = 19,
+     xlab = "Petalo Invertido (Artificial)",
+     ylab = "Ancho del Pétalo",
+     main = "Relación Negativa Simulada")
+
+abline(lm(Petal.Width ~ Inverse.Petal, data = iris), col = "black", lwd = 2, lty = 2)')
+
+output$Ejemplo_3_scatter_plot = renderPlot({
+  # Crear una variable artificial inversamente proporcional
+  iris$Inverse.Petal <- max(iris$Petal.Length) - iris$Petal.Length
+  
+  plot(iris$Inverse.Petal, iris$Petal.Width,
+       col = as.numeric(iris$Species),
+       pch = 19,
+       xlab = "Petalo Invertido (Artificial)",
+       ylab = "Ancho del Pétalo",
+       main = "Relación Negativa Simulada")
+  
+  abline(lm(Petal.Width ~ Inverse.Petal, data = iris), col = "black", lwd = 2, lty = 2)
+})
+
+output$Ejemplo_4_scatter = renderText('# Colores más sobrios y fondo limpio
+palette(c("#1f77b4", "#ff7f0e", "#2ca02c"))  # Azul, naranja, verde
+
+par(bg = "white")  # Fondo blanco
+plot(iris$Petal.Length, iris$Petal.Width,
+     col = as.numeric(iris$Species),
+     pch = 16,
+     xlab = "Largo del Pétalo",
+     ylab = "Ancho del Pétalo",
+     main = "",
+     cex = 1.2,
+     cex.axis = 0.9,
+     cex.lab = 1.1)
+
+legend("topleft",
+       legend = levels(iris$Species),
+       col = 1:3,
+       pch = 16,
+       bty = "n")')
+
+output$Ejemplo_4_scatter_plot = renderPlot({
+  # Colores más sobrios y fondo limpio
+  palette(c("#1f77b4", "#ff7f0e", "#2ca02c"))  # Azul, naranja, verde
+  
+  par(bg = "white")  # Fondo blanco
+  plot(iris$Petal.Length, iris$Petal.Width,
+       col = as.numeric(iris$Species),
+       pch = 16,
+       xlab = "Largo del Pétalo",
+       ylab = "Ancho del Pétalo",
+       main = "",
+       cex = 1.2,
+       cex.axis = 0.9,
+       cex.lab = 1.1)
+  
+  legend("topleft",
+         legend = levels(iris$Species),
+         col = 1:3,
+         pch = 16,
+         bty = "n")
 })
 
 output$scatterplot_plotly1 = renderPlotly({# Cargar librerías
